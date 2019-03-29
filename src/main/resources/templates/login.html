@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<!-- 引入thymeleaf 模板-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- 引入 jquery.js-->
+  	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.js}"></script> 
+    <!--引入  bootstrap-->
+ 	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css" />
+
+    
+</head>
+<body>
+
+
+
+<h1 align="center" >
+		登陆
+</h1>
+
+<!--  <span th:text=${user.name.length()}></span>
+<h3 th:text="${user.name}"></h3>
+<a th:href="@{/index(username='lyj')}">点击跳转</a>
+-->
+<button class="btn btn-success">按钮</button>
+</body>
+<script type="text/javascript">
+
+//alert("ok")
+</script>
+</html>

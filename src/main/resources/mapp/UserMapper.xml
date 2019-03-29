@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.mapp.UserMapper">
+<!-- 开启二级缓存 -->
+  <cache/>
+  <resultMap id="BaseResultMap" type="com.springboot.enty.User">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.springboot.enty.User"
+ 
+  >
+    insert into user (`name`, sex, age
+      )
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.springboot.enty.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM user WHERE 1=1 
+    <if test="entity.name != null and entity.name != ''">
+       AND `name` = #{entity.name,jdbcType=VARCHAR}
+    </if>
+    <if test="entity.sex != null and entity.sex != ''">
+       AND sex = #{entity.sex,jdbcType=VARCHAR}
+    </if>
+    <if test="entity.age != null and entity.age != ''">
+       AND age = #{entity.age,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+  <select id="page" resultMap="BaseResultMap">
+    SELECT * FROM user WHERE 1=1 
+    <if test="entity.name != null and entity.name != ''">
+       AND name = #{entity.name,jdbcType=VARCHAR}
+    </if>
+    <if test="entity.sex != null and entity.sex != ''">
+       AND sex = #{entity.sex,jdbcType=VARCHAR}
+    </if>
+    <if test="entity.age != null and entity.age != ''">
+       AND age = #{entity.age,jdbcType=INTEGER}
+    </if>
+    <if test="paging !=null and paging.offset >= 0 and paging.pageSize > 0">
+       limit ${paging.offset}, ${paging.pageSize} 
+    </if>
+  </select>
+  
+  <select id="selectuser" resultType="com.springboot.enty.User"> 
+  
+  select * from user
+  
+  </select>
+  
+</mapper>
