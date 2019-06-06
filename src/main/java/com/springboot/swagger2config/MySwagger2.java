@@ -15,6 +15,7 @@ public class MySwagger2 {
 	public class Swagger2Config {
 		@Bean
 		public Docket createRestfulApi() {// api文档实例
+			
 			return new Docket(DocumentationType.SWAGGER_2)// 文档类型：DocumentationType.SWAGGER_2
 					.apiInfo(apiInfo())// api信息
 					.select()// 构建api选择器

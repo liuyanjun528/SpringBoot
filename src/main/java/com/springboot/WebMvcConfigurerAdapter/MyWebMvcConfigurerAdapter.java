@@ -5,7 +5,16 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.springboot.handlerInterceptor.TestHandlerInterceptor;
-
+/**
+ * 其实以前都是继承WebMvcConfigurerAdapter类 不过springBoot2.0以上 WebMvcConfigurerAdapter 方法过时，
+ * 有两种替代方案：
+1、继承WebMvcConfigurationSupport
+2、实现WebMvcConfigurer
+但是继承WebMvcConfigurationSupport会让Spring-boot对mvc的自动配置失效。根据项目情况选择。
+现在大多数项目是前后端分离，并没有对静态资源有自动配置的需求所以继承WebMvcConfigurationSupport也未尝不可。
+ * @author 刘彦军
+ *
+ */
 //springboot也可以通过WebMvcConfigurer接口，来添加一些自己需要的一些功能，
 //也可以继承WebMvcConfigurerAdapter类，WebMvcConfigurerAdapter也是实现自WebMvcConfigurer接口
 @Configuration

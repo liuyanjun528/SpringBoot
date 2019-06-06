@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.springnoot.myEnum.MyEnum;
+import com.springboot.myEnum.MyEnum;
 @Component
 public class ResponseMessage<E> implements Serializable{
 	/**
@@ -15,6 +15,7 @@ public class ResponseMessage<E> implements Serializable{
 	private String code;
 	private String message;
 	private List<E> list;
+	
 	public String getCode() {
 		return code;
 	}
@@ -40,5 +41,14 @@ public class ResponseMessage<E> implements Serializable{
 	this.code=my.getCode();
 	this.message=my.getMessage();
 	}
-
+	public ResponseMessage(String code, String message) {
+		super();
+		this.code = code;
+		this.message = message;
+	}
+	public ResponseMessage() {
+		
+	}
+	
+	
 }

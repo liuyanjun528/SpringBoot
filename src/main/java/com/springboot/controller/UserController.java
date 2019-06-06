@@ -22,8 +22,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.HttpRequest;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,10 +36,10 @@ import com.springboot.mapp.Ainmal;
 import com.springboot.mapp.Cat;
 import com.springboot.mapp.StuMapper;
 import com.springboot.mapp.UserMapper;
+import com.springboot.myEnum.MyEnum;
 import com.springboot.proxyFactory.CarAdd;
 import com.springboot.proxyFactory.ProxyFactory;
 import com.springboot.response.ResponseMessage;
-import com.springnoot.myEnum.MyEnum;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -65,11 +67,11 @@ public class UserController{
 	private   ResponseMessage<User> responsemessage;
 	//交由线程池进行异步处理，获取线程池bean，name
 	//@Async("MyThreadPoolExecutroConfin")
-	@GetMapping("/user")
+	@RequestMapping("/user/{id}")
 	@ApiOperation("用户接口")
 	//@Cacheable(key="'controller'")//redis缓存，使用方法名作为key，返回值作为value，存入redis
 	//配置了findByName函数的返回值将被加入缓存。同时在查询时，会先从缓存中获取，若不存在才再发起对数据库的访问。
-	public  ResponseMessage<User> controller( User user,HttpServletRequest request){
+	public  ResponseMessage<User> controller( User user,HttpServletRequest request, @PathVariable Integer id) {
 	//List<User> list=usermapper.page(user, new Paging(1));
 	//AOP使用jdk代理模式.强制类型转换需要用接口去接
 //	Ainmal ainmal=(Ainmal)new ProxyFactory(cat).getProxyObject(caradd);
@@ -78,8 +80,11 @@ public class UserController{
 	
 	System.out.println(ainmal.selectById(2));//基于mybatisPlus,baseMapper的查询
 	System.out.println(stu);
+	System.out.println("id"+id);
 	//log.info(this.user.toString());
 	//responsemessage.setList(list);
+	//System.out.println(2/0);
+	
 	
 	responsemessage.sucess(MyEnum.SUCESS);
 	System.out.println(request.getServletContext().getAttribute("num"));

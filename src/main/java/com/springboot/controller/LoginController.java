@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.enty.User;
 
@@ -38,10 +39,12 @@ public class LoginController {
 	}
 	@ApiOperation("登陆")
 	@GetMapping("/login")
-	public String login() {
+	public ModelAndView login() {
 		// new ClassPathXmlApplicationContext("");
-		
-		return "login";
+		ModelAndView modelAndView=	new  ModelAndView();
+		modelAndView.setViewName("login");
+		modelAndView.addObject("modelAndView","使用modelAndView添加数据模型到前");
+		return modelAndView ;
 		
 	}
 	

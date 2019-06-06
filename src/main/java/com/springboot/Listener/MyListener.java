@@ -15,15 +15,14 @@ public class MyListener implements ServletContextListener{
 	  */
 	@Override
 	public void contextDestroyed(ServletContextEvent var1) {
-		//销毁前可存入数据库，持久保存数据
-		System.out.println("销毁====num的次数"+var1.getServletContext().getAttribute("num"));
+		System.out.println("销毁前可存入数据库，持久保存数据（程序停止）====num的次数"+var1.getServletContext().getAttribute("num"));
 	}
 	/**
 	  * 当Servlet 容器终止Web 应用时调用该方法。在调用该方法之前，容器会先销毁所有的Servlet 和Filter 过滤器。
 	  */
 	@Override
 	public void contextInitialized(ServletContextEvent var1) {
-		//统计总人数，初始化容器时，可从数据库取出数据，存入ServletContext域中，拦截器中在获取到
-		System.out.println("初始化===");
+		System.out.println("ServletContextListener监听Servlet上下文对象的初始化，"
+				+ "初始化时，可从数据库取出数据，存入ServletContext域中，请求拦截器中在获取到进行统计");
 	}
 }

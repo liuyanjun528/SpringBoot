@@ -27,7 +27,7 @@
 
 		<!--数据库链接URL，用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/rootdatabase?characterEncoding=utf8"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/rootdatabase?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
 			userId="root" password="123456">
 			<property name="useInformationSchema" value="true" />
 			<property name="remarksReporting" value="true" />
