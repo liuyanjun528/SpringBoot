@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.my</groupId>
 	<artifactId>springboot</artifactId>
@@ -18,40 +19,37 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies> 
+	<dependencies>
 		<!--spring MD5加密jar -->
 		<dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
 		</dependency>
 
-	<!-- springboot thymeleaf模板引擎 -->
-		 <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <!-- springboot 使用springAOP -->
-        <dependency>
-    		<groupId>org.springframework.boot</groupId>
-   			 <artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
+		<!-- springboot thymeleaf模板引擎 -->
 		<dependency>
-   		 	<groupId>org.aspectj</groupId>
-   		 	<artifactId>aspectjweaver</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
-		<!--导入配置文件处理器，配置文件进行绑定就会有提示-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-		<!-- 开发热部署依赖  修改不用重启项目，保存自动重启-->
+		<!-- springboot 使用springAOP -->
 		<!-- <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-devtools</artifactId>
-        <optional>true</optional>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency> -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency> 
+
+		<!--导入配置文件处理器，配置文件进行绑定就会有提示 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- 开发热部署依赖 修改不用重启项目，保存自动重启 -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			<optional>true</optional> </dependency> -->
 		<dependency>
 			<groupId>com.meditrusthealth</groupId>
 			<artifactId>fast-common-page</artifactId>
@@ -67,33 +65,26 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--   <dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.2</version>
-		</dependency> -->
-		
-	<!-- 	 mybatisplus与springboot整合  -->
-			<dependency>
-			    <groupId>com.baomidou</groupId>
-			    <artifactId>mybatisplus-spring-boot-starter</artifactId>
-			    <version>1.0.5</version>
-			</dependency>
-		<!-- 	 MP 核心库 -->
-			<dependency>
-			    <groupId>com.baomidou</groupId>
-			    <artifactId>mybatis-plus</artifactId>
-			    <version>2.3</version>
-			</dependency>
-	
+		<!-- <dependency> <groupId>org.mybatis.spring.boot</groupId> <artifactId>mybatis-spring-boot-starter</artifactId> 
+			<version>1.3.2</version> </dependency> -->
+
+		<!-- mybatisplus与springboot整合 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatisplus-spring-boot-starter</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+		<!-- MP 核心库 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
+			<version>2.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 
 		<dependency>
@@ -117,42 +108,56 @@
 			<artifactId>mybatis-generator-plugin-ext</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<!--引入swagger  -->
+		<!--引入swagger -->
 		<dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-		<!-- 数据库连接池 druid   springboot 2.0 默认连接池就是Hikari-->
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+		<!-- 数据库连接池 druid springboot 2.0 默认连接池就是Hikari -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.1.10</version>
 		</dependency>
-		<!--SpringBoot WebJars 通过maven来管理前端资源，引入jquery 
-			可额外使用webjars-locator来省略引用时的版本号
-		 -->
+		<!--SpringBoot WebJars 通过maven来管理前端资源，引入jquery 可额外使用webjars-locator来省略引用时的版本号 -->
 		<dependency>
-    		<groupId>org.webjars</groupId>
-    		<artifactId>webjars-locator</artifactId>
-   			<version>0.34</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.34</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>bootstrap</artifactId>
-		    <version>3.3.7</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>3.3.1</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.3.1</version>
 		</dependency>
-		
+		<!--解决maven install 报错xxx jar不存在，加入相应的jar包即可解决错误  -->
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy-agent</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
 
 	</dependencies>
 	<!-- 配置插件 -->
@@ -161,15 +166,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
 			</plugin>
 			<!-- maven打包 -->
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin> 		
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
 			<!-- 自动生成代码插件 -->
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>

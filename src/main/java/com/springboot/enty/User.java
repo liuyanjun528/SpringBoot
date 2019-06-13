@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Component;
 //指定自定义配置文件的位置
 @PropertySource(value= {"classpath:user.properties"})
 @Component
-//读取配置文件，以什么前缀读取
+//读取配置文件，以什么前缀读取,适合读取配置文件中的所有信息 
 @ConfigurationProperties(prefix="user1")
 public class User implements Serializable {
    
@@ -27,6 +28,7 @@ public class User implements Serializable {
 	/**
      * name 描述:
      */
+	//@Value("${}")//可以获取配置文件的值
     private String name;
 
     /**
