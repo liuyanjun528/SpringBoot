@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meditrusthealth.fast.common.page.Paging;
+import com.springboot.Order;
 import com.springboot.enty.Stu;
 import com.springboot.enty.User;
 import com.springboot.mapp.Ainmal;
@@ -52,7 +53,8 @@ import lombok.extern.slf4j.Slf4j;
 @CacheConfig(cacheNames= {"UserControllercache"})//此注解会将这个类所缓存的都存储在指定的这个名字下面
 //（redis会生成一个文件名），如果不用这个注解，那么方法上使用@Cacheable注解是必须给一个value属性，指定数据最后缓存到哪个redis库中
 public class UserController{
-	
+	@Autowired
+	Order order;
 	@Autowired
 	private StuMapper stuMapper;
 	@Autowired
@@ -85,7 +87,7 @@ public class UserController{
 	//responsemessage.setList(list);
 	//System.out.println(2/0);
 	
-	
+	System.out.println(order.order("李四"));
 	responsemessage.sucess(MyEnum.SUCESS);
 	System.out.println(request.getServletContext().getAttribute("num"));
 		return responsemessage;
