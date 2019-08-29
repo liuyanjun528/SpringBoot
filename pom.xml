@@ -20,6 +20,20 @@
 	</properties>
 	
 	<dependencies>
+	<!-- 二维码jar -->
+	<dependency>
+	    <groupId>com.google.zxing</groupId>
+	    <artifactId>javase</artifactId>
+	    <version>3.3.0</version>
+	</dependency>
+	<!-- 二维码jar -->
+	<dependency>
+	    <groupId>com.google.zxing</groupId>
+	    <artifactId>core</artifactId>
+	    <version>3.3.0</version>
+	</dependency>
+
+	
 		<dependency>
 		<groupId>com.my</groupId>
 	<artifactId>springboot-web</artifactId>
@@ -37,7 +51,7 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<!-- springboot 使用springAOP -->
-		<!-- <dependency>
+		<!--  <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency> -->
@@ -59,6 +73,11 @@
 			<groupId>com.meditrusthealth</groupId>
 			<artifactId>fast-common-page</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+		<groupId>com.meditrusthealth</groupId>
+	<artifactId>fast-common-core</artifactId>
+	<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

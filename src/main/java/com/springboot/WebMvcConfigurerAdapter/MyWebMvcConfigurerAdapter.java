@@ -2,7 +2,9 @@ package com.springboot.WebMvcConfigurerAdapter;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.springboot.handlerInterceptor.TestHandlerInterceptor;
 /**
@@ -42,5 +44,14 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
 		// 注册一个contorller路径，在设置视图名称，访问contorller在进行跳转视图
 		registry.addViewController("/form").setViewName("form");
 	}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler(new String[]{"/lyj/**"})
+//		.addResourceLocations(new String[]{"classpath:/static/"});
+//		registry.addResourceHandler(new String[]{"swagger-ui.html"})
+//				.addResourceLocations(new String[]{"classpath:/META-INF/resources/"});
+//		registry.addResourceHandler(new String[]{"/webjars/**"})
+//				.addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"});
+//	}
 
 }
