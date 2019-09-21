@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 @EnableAsync
 public class MyThreadPoolExecutroConfin {
-	@Bean(value="MyThreadPoolExecutroConfin")
+	@Bean(value="MyThreadPoolExecutroConfin",destroyMethod="shutdown")
 	public ExecutorService getExecutorService() {
 		ExecutorService  ExecutorService =	Executors.newFixedThreadPool(3);
 		return ExecutorService;

@@ -13,6 +13,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -30,7 +31,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Slf4j
 @org.springframework.boot.autoconfigure.SpringBootApplication
-
+@EnableScheduling
 public class SpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApplication.class, args);

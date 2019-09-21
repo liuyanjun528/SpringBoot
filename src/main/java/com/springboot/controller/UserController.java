@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meditrusthealth.fast.common.core.servlet.ServletUtils;
-import com.springboot.Order;
+//import com.springboot.Order;
 import com.springboot.enty.Stu;
 import com.springboot.enty.User;
 import com.springboot.mapp.Ainmal;
@@ -33,8 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController{
 	@Autowired
 	RedisTemplate<String, String> jedis;
-	@Autowired
-	Order order;
+	//@Autowired
+	//Order order;
 	@Autowired
 	private StuMapper stuMapper;
 	@Autowired
@@ -68,7 +68,7 @@ public class UserController{
 	//System.out.println(2/0);
 	System.out.println(request.getHeader("User-Agent"));// 客户端浏览器类型
 	System.out.println(ServletUtils.getRemoteIp(request));// 
-	System.out.println(order.order("李四")+order.getName());
+	//System.out.println(order.order("李四")+order.getName());
 	responsemessage.sucess(MyEnum.SUCESS);
 	System.out.println(request.getServletContext().getAttribute("num"));
 		return responsemessage;

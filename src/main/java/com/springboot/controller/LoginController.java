@@ -3,7 +3,7 @@ package com.springboot.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.cache.CacheManager;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -43,6 +43,7 @@ public class LoginController {
 	@ApiOperation("登陆")
 	@GetMapping("/login")
 	public ModelAndView login() {
+		
 		// new ClassPathXmlApplicationContext("");
 		ModelAndView modelAndView=	new  ModelAndView();
 		modelAndView.setViewName("login");
