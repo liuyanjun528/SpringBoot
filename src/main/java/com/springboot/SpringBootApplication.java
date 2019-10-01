@@ -30,8 +30,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ServletComponentScan//监听器注解
 @EnableSwagger2
 @Slf4j
+
 @org.springframework.boot.autoconfigure.SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 public class SpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApplication.class, args);

@@ -14,21 +14,34 @@
     
 </head>
 <body>
-
-
-
 <h1 align="center" >
-		登陆
+		home主页
 </h1>
 <h3 th:text=${modelAndView}></h3>
-  <!-- <span th:text=${user.name.length()}></span>
-<h3 th:text="${user.name}"></h3>
-<a th:href="@{/index(username='lyj')}">点击跳转</a> -->
-
-<button class="btn btn-success">按钮</button>
+<button class="btn btn-success"  id="but">ajax按钮</button>
 </body>
 <script type="text/javascript">
+$(function(){
 
+	$("#but").click(function(){
+		$.ajax({
+			url:'ajax',
+			data:{"name":"liuyanjun"},
+			dataType:'html',
+			error:function(){
+				alert("请求出错了")
+			},
+			success:function(data){
+				alert(data)
+			},
+			type:'GET'
+			
+			
+		})
+	})
+	
+})
 //alert("ok")
 </script>
+
 </html>

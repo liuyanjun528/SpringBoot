@@ -1,16 +1,62 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<!-- 引入thymeleaf 模板-->
+<html xmlns:th="http://www.thymeleaf.org" >
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- 引入 jquery.js-->
+  	<script type="text/javascript" src="webjars/jquery/jquery.js"></script> 
+    <!--引入  bootstrap-->
+ 	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css" />
+	
 </head>
+
 <body>
-		<h3 align="center">我是8099端口首页，默认访问项目static目录下index，html
+
+<h3 align="center">默认访问项目static目录下index，html
 			springboot  静态资源默认路径为一个数组
 		CLASSPATH_RESOURCE_LOCATIONS=META-INF/resources/",
 				"classpath:/resources/",
 				 "classpath:/static/", 
 				 "classpath:/public/"};
-		</h3>
+</h3>
+
+<h1 align="center" >
+		登陆
+</h1>
+  <!-- <span th:text=${user.name.length()}></span>
+<h3 th:text="${user.name}"></h3>
+<a th:href="@{/index(username='lyj')}">点击跳转</a> -->
+<form action="/login" method="get">
+	<label>姓名:</label><input type="text" name="name"/>
+	<label>密码:</label><input type="text"  name="pwd"/>
+   <input type="submit" value="登陆" />
+</form>
+<button class="btn btn-success"  id="but">ajax按钮</button>
 </body>
+<script type="text/javascript">
+$(function(){
+
+	$("#but").click(function(){
+		$.ajax({
+			url:'ajax',
+			data:{"name":"liuyanjun"},
+			dataType:'html',
+			error:function(){
+				alert("请求出错了")
+			},
+			success:function(data){
+				alert(data)
+			},
+			type:'GET'
+			
+			
+		})
+	})
+	
+})
+//alert("ok")
+</script>
 </html>

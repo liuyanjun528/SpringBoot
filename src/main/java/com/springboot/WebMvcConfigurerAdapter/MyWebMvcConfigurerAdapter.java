@@ -43,6 +43,7 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		// 注册一个contorller路径，在设置视图名称，访问contorller在进行跳转视图
 		registry.addViewController("/form").setViewName("form");
+		
 	}
 //	@Override
 //	public void addResourceHandlers(ResourceHandlerRegistry registry) {

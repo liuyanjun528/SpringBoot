@@ -51,10 +51,10 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<!-- springboot 使用springAOP -->
-		<!--  <dependency>
+		 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency> -->
+		</dependency> 
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -79,7 +79,26 @@
 	<artifactId>fast-common-core</artifactId>
 	<version>1.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+	
+ <!-- <dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <exclusions>
+    剔除jar，不剃总报找不到 commons-pool2包，我草
+    <exclusion>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-pool2</artifactId>
+    </exclusion>
+    
+    </exclusions>
+</dependency> -->
+
+<!-- <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-pool2</artifactId>
+</dependency> -->
+
+
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

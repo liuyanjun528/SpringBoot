@@ -24,6 +24,7 @@ public class MySwagger2 {
 		public Docket createRestfulApi() {// api文档实例
 			
 			return new Docket(DocumentationType.SWAGGER_2)// 文档类型：DocumentationType.SWAGGER_2
+					.enable(true)//配置false不会生成swaggerApi，生产环境中可以在配置文件中配置一个变量然后value读取，禁止生成api，以保证接口安全，不直接暴露出去
 					.apiInfo(apiInfo())// api信息
 					.select()// 构建api选择器     会扫描注解了又controller的类
 					.apis(RequestHandlerSelectors.basePackage("com.springboot"))// api选择器选择api的包

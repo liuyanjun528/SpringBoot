@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Api("/Api")
 @RestController
 @EnableCaching//开启redis缓存
-@CacheConfig(cacheNames= {"UserControllercache"})//此注解会将这个类所缓存的都存储在指定的这个名字下面
+//@CacheConfig(cacheNames= {"UserControllercache"})//此注解会将这个类所缓存的都存储在指定的这个名字下面
 //（redis会生成一个文件名），如果不用这个注解，那么方法上使用@Cacheable注解是必须给一个value属性，指定数据最后缓存到哪个redis库中
 public class UserController{
 	@Autowired
@@ -59,10 +61,19 @@ public class UserController{
 //	Ainmal ainmal=(Ainmal)new ProxyFactory(cat).getProxyObject(caradd);
 //	ainmal.eat();
 	Stu stu=stuMapper.selectByPrimaryKey(1);
-
-	System.out.println(ainmal.selectById(2));//基于mybatisPlus,baseMapper的查询
+	//jedis.setValueSerializer(new Jackson2JsonRedisSerializer<>(Stu.class));
+//	jedis.setKeySerializer(new StringRedisSerializer());
+//	jedis.setValueSerializer(new Jackson2JsonRedisSerializer<>(Stu.class));
+	jedis.opsForValue().set("STU", stu.toString());
 	System.out.println(stu);
-	System.out.println("id"+id);
+//	jedis.setKeySerializer(new StringRedisSerializer());
+//	jedis.setValueSerializer(new Jackson2JsonRedisSerializer<>(Stu.class));
+	String getStu = jedis.opsForValue().get("STU");
+	
+	 System.err.println(getStu+"============");
+//	System.out.println(ainmal.selectById(2));//基于mybatisPlus,baseMapper的查询
+//	System.out.println(stu);
+//	System.out.println("id"+id);
 	//log.info(this.user.toString());
 	//responsemessage.setList(list);
 	//System.out.println(2/0);

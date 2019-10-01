@@ -40,8 +40,27 @@ public class User implements Serializable {
      * age 描述:
      */
     private Integer age;
+    private Integer id;
+    private String headImg;
+    
 
-    private static final long serialVersionUID = 1L;
+    public String getHeadImg() {
+		return headImg;
+	}
+
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public String getName() {
         return name;
