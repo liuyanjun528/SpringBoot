@@ -1,11 +1,19 @@
 package com.springboot.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.http.HttpResponse;
 import org.json.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
@@ -13,9 +21,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -96,5 +107,34 @@ public class LoginController {
 		return modelAndView;
 
 	}
+@GetMapping("test")
+@ResponseBody
+	public String test(String name,@RequestParam(defaultValue="1")int age) {
+		return "name"+name+"age"+age+"你好啊";
+	}
 
+@GetMapping("download")
+@ResponseBody
+	public void download(HttpServletResponse response,HttpServletRequest request) throws IOException {
+	String fileName = "zookeeper.tar.gz";// 文件名
+	String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+	//String realPath = request.getServletContext().getRealPath("");
+	System.out.println(path);
+	//System.out.println(realPath);
+    if (fileName != null) {
+        //设置文件路径
+        File file = new File(path+"static",fileName);
+        if (file.exists()) {
+        	System.out.println("======================");
+        	ServletOutputStream outputStream = response.getOutputStream();
+            response.setContentType("application/force-download");// 设置强制下载不打开
+            response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
+            byte[] readFileToByteArray = FileUtils.readFileToByteArray(file);
+            outputStream.write(readFileToByteArray);
+            outputStream.flush();
+            outputStream.close();
+        }
+    }
+
+	}
 }

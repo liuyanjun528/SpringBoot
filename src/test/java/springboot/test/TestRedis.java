@@ -14,7 +14,7 @@ import com.springboot.SpringBootApplication;
 public class TestRedis {
 
 	@Autowired
-	private RedisTemplate<String , Object> redisTemplate;
+	private RedisTemplate<String , String> redisTemplate;
 	@Test
 	public void testRedis() {
 		redisTemplate.opsForValue().set("name", "liuyanjun");
