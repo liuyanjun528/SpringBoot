@@ -1,4 +1,8 @@
 package com.springboot.service;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
@@ -6,6 +10,7 @@ import com.springboot.enty.Stu;
 
 @Service
 public class RedisTestService {
+	
 	/**
 	value 代表数据存储在redis库中哪个文件夹，不写value会报错，
 	除非在类上注解@CacheConfig(cacheNames= {"UserControllercache"})
@@ -20,6 +25,7 @@ public class RedisTestService {
 		stu.setId(12);
 		stu.setStuname("zhang三");
 		stu.setStusex("男");
+	
 		return stu;
 	}
 }

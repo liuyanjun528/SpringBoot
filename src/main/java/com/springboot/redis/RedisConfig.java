@@ -1,5 +1,7 @@
 package com.springboot.redis;
 
+import java.time.Duration;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 对于springboot来说，自动配置已经帮我们注入jedisConnectionFactory，以及redisTemplate，StringRedisTemplate
  * 所以不需要在做了，只需要在配置文件做相关连接池以及redis的连接配置即可 不过自动配置的RedisTemplate<Object,
  * Object>默认使用jdk的序列化机制，我们需要配置json的序列化 Jackson2JsonRedisSerializer
- * 
+ * 以及cache的缓存管理器配置
  * @author 刘彦军
  *
  */
@@ -56,7 +58,14 @@ public class RedisConfig extends CachingConfigurerSupport {
 		template.setHashValueSerializer(jackson2JsonRedisSerializer);
 		return template;
 	}
-
+	/**
+	 * 自定义缓存管理器，注入RedisCacheManager（不使用springboot默认提供的），
+	 * 下面缓存管理器配置了缓存失效时间，(如果有其他需求，需要重新定义缓存管理器，在使用缓存注解时指定对应的缓存管理器)
+	 * 过期时间只对Cache的那几个注解有效比如（@Cacheable，@CachePut），跟redisTemplate对象添加的缓存无关
+	 * 以及cache注解存取数据的序列化设置
+	 * @param factory
+	 * @return
+	 */
 	@Bean
 	public CacheManager cacheManager(RedisConnectionFactory factory) {
 		RedisSerializer<String> redisSerializer = new StringRedisSerializer();
@@ -74,6 +83,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 		//（存入数据序列化配置）
 		RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
 		RedisCacheConfiguration redisCacheConfiguration = config
+				//配置缓存失效时间100秒
+				.entryTtl(Duration.ofSeconds(100))
 				.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
 				.serializeValuesWith(
 						RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer));
