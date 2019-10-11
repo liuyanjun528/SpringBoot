@@ -12,6 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.springboot.enty.Stu;
 import com.springboot.enty.User;
 import com.springboot.service.RedisTestService;
@@ -50,16 +51,16 @@ public class RedisTest {
 
 		return "redistesthhhhhh你好五五五";
 	}
-
-	@GetMapping("/getUser")
-	public User getUser() {
-
-		return redisTestService.getUser();
-	}
-
 	@GetMapping("/getStu")
 	public Stu getStu() {
-
 		return redisTestService.getStu();
+	}
+	
+	@GetMapping("/test2")
+	public Stu test2() {
+		String key = "'stus'::stu:1";
+		Stu redisStu = (Stu) redisTemplate.opsForValue().get(key);
+		System.out.println(redisStu);
+		return redisStu;
 	}
 }
